@@ -1,0 +1,5 @@
+name: DiscordSynergy
+version: 1.0
+author: Deobfuscate
+main: package com.github.DiscordSynergy.Main
+api-version: 1.18
