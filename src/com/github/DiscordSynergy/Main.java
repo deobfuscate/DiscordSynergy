@@ -4,17 +4,26 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
+import javax.security.auth.login.LoginException;
+
 public class Main extends JavaPlugin {
     private Logger logger;
-    
+    private Discord discord;
+
     @Override
     public void onEnable() {
         logger = Bukkit.getLogger();
-        logger.info("Plugin Enabled");
+        discord = new Discord();
+        try {
+            discord.login();
+        }
+        catch (LoginException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onDisable() {
-        logger.info("Plugin Disabled");
+        discord.quit();
     }
 }
