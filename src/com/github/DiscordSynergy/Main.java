@@ -17,8 +17,9 @@ public class Main extends JavaPlugin {
         try {
             discord.login();
         }
-        catch (LoginException e) {
-            e.printStackTrace();
+        catch (LoginException exception) {
+            logger.warning("Could not log in to Discord: " + exception.getMessage());
+            this.getPluginLoader().disablePlugin(this);
         }
     }
 
