@@ -8,6 +8,7 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends JavaPlugin {
     private Logger logger;
+    private Boolean online = false;
     private Discord discord;
 
     @Override
@@ -16,15 +17,19 @@ public class Main extends JavaPlugin {
         discord = new Discord();
         try {
             discord.login();
+            online = true;
         }
         catch (LoginException exception) {
             logger.warning("Could not log in to Discord: " + exception.getMessage());
+            online = false;
             this.getPluginLoader().disablePlugin(this);
         }
     }
 
     @Override
     public void onDisable() {
-        discord.quit();
+        if (online) {
+            discord.quit();
+        }
     }
 }
