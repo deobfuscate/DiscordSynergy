@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
         logger = Bukkit.getLogger();
         discord = new Discord();
         try {
-            discord.login();
+            discord.connect();
             online = true;
         }
         catch (LoginException exception) {
@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         if (online) {
-            discord.quit();
+            discord.disconnect();
         }
     }
 }

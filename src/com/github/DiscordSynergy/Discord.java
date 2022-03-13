@@ -7,11 +7,11 @@ import javax.security.auth.login.LoginException;
 public class Discord {
     private JDA jda;
 
-    public void login() throws LoginException {
+    public void connect() throws LoginException {
         jda = JDABuilder.createDefault("").build();
     }
 
-    public void quit() {
+    public void disconnect() {
         jda.shutdownNow();
     }
 }
