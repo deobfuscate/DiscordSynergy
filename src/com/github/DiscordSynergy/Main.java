@@ -18,6 +18,7 @@ public class Main extends JavaPlugin {
         try {
             discord.connect();
             online = true;
+            logger.info("Connected to Discord");
         }
         catch (LoginException exception) {
             logger.warning("Could not log in to Discord: " + exception.getMessage());
@@ -29,6 +30,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         if (online) {
+            logger.info("Disconnecting from Discord");
             discord.disconnect();
         }
     }
