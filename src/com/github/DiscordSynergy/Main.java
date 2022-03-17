@@ -8,17 +8,17 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends JavaPlugin {
     private Logger logger;
-    private Boolean online = false;
     private Discord discord;
+    private Boolean online = false;
 
     @Override
     public void onEnable() {
         logger = Bukkit.getLogger();
         discord = new Discord();
         try {
-            discord.connect();
+            String name = discord.connect();
             online = true;
-            logger.info("Connected to Discord");
+            logger.info("Connected to Discord as " + name);
         }
         catch (LoginException exception) {
             logger.warning("Could not log in to Discord: " + exception.getMessage());
