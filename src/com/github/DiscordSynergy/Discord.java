@@ -6,9 +6,14 @@ import javax.security.auth.login.LoginException;
 
 public class Discord {
     private JDA jda;
+    private String token;
+    
+    public Discord(String token) {
+        this.token = token;
+    }
 
     public String connect() throws LoginException {
-        jda = JDABuilder.createDefault("").build();
+        jda = JDABuilder.createDefault(token).build();
         return jda.getSelfUser().getName();
     }
 
