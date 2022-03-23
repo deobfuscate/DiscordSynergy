@@ -6,9 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 import javax.security.auth.login.LoginException;
 
+import com.github.DiscordSynergy.Discord.Connection;
+
 public class Main extends JavaPlugin {
     private Logger logger;
-    private Discord discord;
+    private Connection discord;
     private Boolean online = false;
     private FileConfiguration config = getConfig();
 
@@ -22,7 +24,7 @@ public class Main extends JavaPlugin {
             return;
         }
 
-        discord = new Discord(token);
+        discord = new Connection(token);
 
         try {
             String name = discord.connect();
