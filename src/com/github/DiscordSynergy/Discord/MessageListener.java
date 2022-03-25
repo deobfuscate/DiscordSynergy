@@ -11,16 +11,14 @@ public class MessageListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.isFromType(ChannelType.TEXT)) {
-            System.out.printf("[%s][%s] %s: %s\n", event.getGuild().getName(),
+            String message = String.format("[%s][%s] %s: %s\n", event.getGuild().getName(),
                 event.getTextChannel().getName(), event.getMember().getEffectiveName(),
                 event.getMessage().getContentDisplay());
-
+            
+            System.out.println(message);
             Collection<? extends Player> players = Bukkit.getOnlinePlayers();
-            for(Player player : players)
-                player.sendMessage("[" + event.getGuild().getName() + "] [" +
-                    event.getTextChannel().getName() + "] " +
-                    event.getMember().getEffectiveName() + ": " + 
-                    event.getMessage().getContentDisplay());
+            for (Player player : players)
+                player.sendMessage(message);
         }
     }
 }
