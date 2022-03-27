@@ -11,7 +11,6 @@ import com.github.DiscordSynergy.Discord.Connection;
 public class Main extends JavaPlugin {
     private Logger logger;
     private Connection discord;
-    private Boolean online = false;
     private FileConfiguration config = getConfig();
 
     @Override
@@ -28,19 +27,17 @@ public class Main extends JavaPlugin {
 
         try {
             String name = discord.connect();
-            online = true;
             logger.info("Connected to Discord as " + name);
         }
         catch (LoginException exception) {
             logger.warning("Could not log in to Discord: " + exception.getMessage());
-            online = false;
             this.getPluginLoader().disablePlugin(this);
         }
     }
 
     @Override
     public void onDisable() {
-        if (!online) return;
+        if (!discord.isOnline()) return;
         logger.info("Disconnecting from Discord");
         discord.disconnect();
     }

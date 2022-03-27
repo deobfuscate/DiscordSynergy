@@ -11,7 +11,7 @@ public class MessageListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.isFromType(ChannelType.TEXT)) {
-            String message = String.format("[%s][%s] %s: %s\n", event.getGuild().getName(),
+            String message = String.format("[%s][#%s] %s: %s\n", event.getGuild().getName(),
                 event.getTextChannel().getName(), event.getMember().getEffectiveName(),
                 event.getMessage().getContentDisplay());
             
