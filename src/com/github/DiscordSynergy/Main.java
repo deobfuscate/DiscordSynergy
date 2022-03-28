@@ -11,13 +11,14 @@ import com.github.DiscordSynergy.Discord.Connection;
 public class Main extends JavaPlugin {
     private Logger logger;
     private Connection discord;
-    private FileConfiguration config = getConfig();
+    public static FileConfiguration config;
 
     @Override
     public void onEnable() {
-        this.saveDefaultConfig();
+        config = getConfig();
+        this.saveDefaultConfig();        
         logger = Bukkit.getLogger();
-        String token = config.getString("token");
+        String token = config.getString("Token");
         if (token == null || token.isEmpty()) {
             logger.warning("Discord token is not set!");
             return;
