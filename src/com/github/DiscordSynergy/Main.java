@@ -38,7 +38,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (!discord.isOnline()) return;
+        if (discord == null || !discord.isOnline()) return;
         logger.info("Disconnecting from Discord");
         discord.disconnect();
     }
