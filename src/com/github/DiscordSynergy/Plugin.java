@@ -1,20 +1,21 @@
 package com.github.DiscordSynergy;
 
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 import javax.security.auth.login.LoginException;
-
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.java.JavaPlugin;
 import com.github.DiscordSynergy.Discord.Connection;
 
-public class Main extends JavaPlugin {
+public class Plugin extends JavaPlugin implements Listener {
     private Logger logger;
     private Connection discord;
     public static FileConfiguration config;
 
     @Override
     public void onEnable() {
+        getServer().getPluginManager().registerEvents(this, this);
         config = getConfig();
         this.saveDefaultConfig();        
         logger = Bukkit.getLogger();

@@ -1,17 +1,15 @@
 package com.github.DiscordSynergy.Discord;
 
 import java.util.Collection;
-
-import com.github.DiscordSynergy.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import com.github.DiscordSynergy.Plugin;
 
 public class MessageListener extends ListenerAdapter {
-    private Boolean relayToMinecraft = Main.config.getBoolean("RelayToMinecraft");
+    private Boolean relayToMinecraft = Plugin.config.getBoolean("RelayToMinecraft");
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
