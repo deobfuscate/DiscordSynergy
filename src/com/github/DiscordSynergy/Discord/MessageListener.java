@@ -11,16 +11,17 @@ import com.github.DiscordSynergy.Plugin;
 public class MessageListener extends ListenerAdapter {
     private Boolean relayToMinecraft = Plugin.config.getBoolean("RelayToMinecraft");
     private Boolean relayToConsole = Plugin.config.getBoolean("RelayToConsole");
+    private String discordChannelID = Plugin.config.getString("DiscordChannelID");
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.isFromType(ChannelType.TEXT)) {
+        if (event.isFromType(ChannelType.TEXT) && event.getChannel().getId() == discordChannelID) {
             String message = String.format("[%s][#%s] %s: %s\n", event.getGuild().getName(),
                 event.getTextChannel().getName(), event.getMember().getEffectiveName(),
                 event.getMessage().getContentDisplay());
                 
             if (relayToConsole) {
-                System.out.print("[Discord]"+message);
+                System.out.print("[Discord]" + message);
             }
             if (relayToMinecraft) {
                 Collection<? extends Player> players = Bukkit.getOnlinePlayers();
