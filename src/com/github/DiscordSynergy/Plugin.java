@@ -35,6 +35,8 @@ public class Plugin extends JavaPlugin implements Listener {
             logger.warning("Could not log in to Discord: " + exception.getMessage());
             this.getPluginLoader().disablePlugin(this);
         }
+        
+        Bukkit.getServer().getPluginManager().registerEvents(new ServerEvents(), this);
     }
 
     @Override
