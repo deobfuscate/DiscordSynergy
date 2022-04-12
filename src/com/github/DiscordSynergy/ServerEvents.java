@@ -6,9 +6,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ServerEvents implements Listener {
+    private Boolean relayToDiscord = Plugin.config.getBoolean("RelayToDiscord");
+
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        System.out.println(player.getName() + " said " + event.getMessage());
+        if (relayToDiscord)
+            System.out.println(player.getName() + " said " + event.getMessage());
     }
 }
