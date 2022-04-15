@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.JDA.Status;
 
 public class Connection {
-    private JDA jda;
+    public static JDA jda;
     private String token;
     
     public Connection(String token) {
