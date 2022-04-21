@@ -1,5 +1,8 @@
 Token: 
+
 RelayToMinecraft: true
 RelayToConsole: true
 RelayToiscord: true
-DiscordChannelID: 
+
+DiscordGuildId: 
+DiscordChannelId: 
