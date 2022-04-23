@@ -41,7 +41,9 @@ public class Plugin extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        if (discord == null || !discord.isOnline()) return;
+        if (discord == null || !discord.isOnline()){
+            return;
+        }
         logger.info("Disconnecting from Discord");
         discord.disconnect();
     }

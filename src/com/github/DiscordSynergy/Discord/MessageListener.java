@@ -25,8 +25,9 @@ public class MessageListener extends ListenerAdapter {
             }
             if (relayToMinecraft) {
                 Collection<? extends Player> players = Bukkit.getOnlinePlayers();
-                for (Player player : players)
+                for (Player player : players) {
                     player.sendMessage(message);
+                }
             }
         }
     }

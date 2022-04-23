@@ -20,10 +20,7 @@ public class Connection {
     }
 
     public Boolean isOnline() {
-        if (jda != null && jda.getStatus() == Status.CONNECTED)
-            return true;
-        else
-            return false;
+        return (jda != null && jda.getStatus() == Status.CONNECTED);
     }
 
     public void disconnect() {
