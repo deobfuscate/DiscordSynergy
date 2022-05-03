@@ -8,7 +8,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ServerEvents implements Listener {
     private Boolean relayToDiscord = Plugin.config.getBoolean("RelayToDiscord");
-    private String discordGuildId = Plugin.config.getString("DiscordGuildId");
     private String discordChannelId = Plugin.config.getString("DiscordChannelId");
     
     @EventHandler
@@ -17,6 +16,6 @@ public class ServerEvents implements Listener {
         if (relayToDiscord) {
             System.out.println(player.getName() + " said " + event.getMessage());
         }
-        Connection.jda.getGuildById(discordGuildId).getTextChannelById(discordChannelId).sendMessage(player.getName() + ": " + event.getMessage());
+        Connection.jda.getTextChannelById(discordChannelId).sendMessage(player.getName() + ": " + event.getMessage()).queue();
     }
 }
