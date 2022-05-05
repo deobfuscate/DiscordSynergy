@@ -14,8 +14,7 @@ public class ServerEvents implements Listener {
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         if (relayToDiscord) {
-            System.out.println(player.getName() + " said " + event.getMessage());
+            Connection.jda.getTextChannelById(discordChannelId).sendMessage(player.getName() + ": " + event.getMessage()).queue();
         }
-        Connection.jda.getTextChannelById(discordChannelId).sendMessage(player.getName() + ": " + event.getMessage()).queue();
     }
 }
