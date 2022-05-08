@@ -1,7 +1,9 @@
 Token: 
+DiscordChannelId: 
 
 RelayToMinecraft: true
 RelayToConsole: true
 RelayToiscord: true
 
-DiscordChannelId: 
+AnnounceJoinsToDiscord: true
+AnnounceQuitsToDiscord: true
