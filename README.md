@@ -4,3 +4,4 @@ A Discord bot plugin for Minecraft Spigot servers that relays messages between b
 ## Features
 * Relay Discord chat to Minecraft
 * Relay Minecraft chat to Discord
+* Announce Minecraft server player joins/quits to Discord
