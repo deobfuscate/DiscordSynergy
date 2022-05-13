@@ -5,11 +5,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ServerEvents implements Listener {
-    private Boolean relayToDiscord = Plugin.config.getBoolean("RelayToDiscord");
     private String discordChannelId = Plugin.config.getString("DiscordChannelId");
-    
+    private Boolean relayToDiscord = Plugin.config.getBoolean("RelayToDiscord");
+    private Boolean announceJoinsToDiscord = Plugin.config.getBoolean("AnnounceJoinsToDiscord");
+    private Boolean announceQuitsToDiscord = Plugin.config.getBoolean("AnnounceQuitsToDiscord");
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        if (!announceJoinsToDiscord) {
+            return;
+        }
+        Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " joined the Minecraft server").queue();
+    }
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
@@ -19,5 +30,13 @@ public class ServerEvents implements Listener {
         if (relayToDiscord) {
             Connection.jda.getTextChannelById(discordChannelId).sendMessage(player.getName() + ": " + event.getMessage()).queue();
         }
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent e) {
+        if (!announceQuitsToDiscord) {
+            return;
+        }
+        Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " left the Minecraft server").queue();
     }
 }
