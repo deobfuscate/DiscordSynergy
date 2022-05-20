@@ -16,8 +16,10 @@ public class MessageListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.isFromType(ChannelType.TEXT) && event.getTextChannel().getId().equals(discordChannelId)) {
-            String message = String.format("[%s][#%s] %s: %s\n", event.getGuild().getName(),
-                event.getTextChannel().getName(), event.getMember().getEffectiveName(),
+            String message = String.format("[%s][#%s] %s: %s\n",
+                event.getGuild().getName(),
+                event.getTextChannel().getName(),
+                event.getMember().getEffectiveName(),
                 event.getMessage().getContentDisplay());
                 
             if (relayToConsole) {
