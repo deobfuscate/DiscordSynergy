@@ -3,7 +3,7 @@ DiscordChannelId:
 
 RelayToMinecraft: true
 RelayToConsole: true
-RelayToiscord: true
+RelayToDiscord: true
 
 AnnounceJoinsToDiscord: true
 AnnounceQuitsToDiscord: true
