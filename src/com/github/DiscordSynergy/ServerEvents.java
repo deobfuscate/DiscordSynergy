@@ -21,6 +21,7 @@ public class ServerEvents implements Listener {
         }
         Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " joined the Minecraft server").queue();
     }
+    
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
