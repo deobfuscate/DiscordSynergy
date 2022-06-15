@@ -22,6 +22,7 @@ public class Plugin extends JavaPlugin implements Listener {
         String token = config.getString("Token");
         if (token == null || token.isEmpty()) {
             logger.warning("Discord token is not set!");
+            // TODO: Propmt for Discord token
             return;
         }
 
