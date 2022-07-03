@@ -23,7 +23,7 @@ public class MessageListener extends ListenerAdapter {
                 event.getMessage().getContentDisplay());
                 
             if (relayToConsole) {
-                System.out.print("[Discord]" + message);
+                System.out.print("[Discord] " + message);
             }
             if (relayToMinecraft) {
                 Collection<? extends Player> players = Bukkit.getOnlinePlayers();
