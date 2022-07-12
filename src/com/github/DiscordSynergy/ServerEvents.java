@@ -16,10 +16,9 @@ public class ServerEvents implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!announceJoinsToDiscord || e.getPlayer().getDisplayName() == null || e.getPlayer().getDisplayName() == "") {
-            return;
+        if (announceJoinsToDiscord && e.getPlayer().getDisplayName() != null && e.getPlayer().getDisplayName() != "") {
+            Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " joined the Minecraft server").queue();
         }
-        Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " joined the Minecraft server").queue();
     }
     
     @EventHandler
