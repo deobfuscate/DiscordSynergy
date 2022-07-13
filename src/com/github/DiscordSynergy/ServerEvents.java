@@ -31,7 +31,7 @@ public class ServerEvents implements Listener {
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        if (!announceQuitsToDiscord || e.getPlayer().getDisplayName() == null || e.getPlayer().getDisplayName() == "") {
+        if (announceQuitsToDiscord && e.getPlayer().getDisplayName() != null && e.getPlayer().getDisplayName() != "") {
             return;
         }
         Connection.jda.getTextChannelById(discordChannelId).sendMessage(e.getPlayer().getDisplayName() + " left the Minecraft server").queue();
