@@ -20,6 +20,7 @@ public class Plugin extends JavaPlugin implements Listener {
         this.saveDefaultConfig();        
         logger = Bukkit.getLogger();
         String token = config.getString("Token");
+        
         if (token == null || token.isEmpty()) {
             logger.warning("Discord token is not set!");
             // TODO: Propmt for Discord token
@@ -42,7 +43,7 @@ public class Plugin extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        if (discord == null || !discord.isOnline()){
+        if (discord == null || !discord.isOnline()) {
             return;
         }
         logger.info("Disconnecting from Discord");
