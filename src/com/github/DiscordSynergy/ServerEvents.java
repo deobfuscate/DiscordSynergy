@@ -14,7 +14,7 @@ public class ServerEvents implements Listener {
     private Boolean announceJoinsToDiscord = Plugin.config.getBoolean("AnnounceJoinsToDiscord");
     private Boolean announceQuitsToDiscord = Plugin.config.getBoolean("AnnounceQuitsToDiscord");
 
-    // Announce Joins to Discord
+    // Announce Minecraft Joins to Discord
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         if (announceJoinsToDiscord && e.getPlayer().getDisplayName() != null && e.getPlayer().getDisplayName() != "") {
@@ -31,7 +31,7 @@ public class ServerEvents implements Listener {
         }
     }
 
-    // Announce Quits to Discord
+    // Announce Minecraft Quits to Discord
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
         if (announceQuitsToDiscord && e.getPlayer().getDisplayName() != null && e.getPlayer().getDisplayName() != "") {
