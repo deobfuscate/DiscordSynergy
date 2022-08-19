@@ -13,6 +13,7 @@ public class MessageListener extends ListenerAdapter {
     private Boolean relayToConsole = Plugin.config.getBoolean("RelayToConsole");
     private String discordChannelId = Plugin.config.getString("DiscordChannelId");
 
+    // When a Discord message is received
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.isFromType(ChannelType.TEXT) && event.getTextChannel().getId().equals(discordChannelId)) {
